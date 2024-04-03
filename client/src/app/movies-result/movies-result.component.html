@@ -1,0 +1,7 @@
+<div *ngFor="let m of movies">
+    <app-movie-item [movie]="m"></app-movie-item>
+</div>
+
+<div class="greetings" *ngIf="movies?.length == 0">
+    <h3>Start searching any movie you like!</h3>
+</div>

@@ -1,0 +1,7 @@
+<div *ngFor="let m of favorites">
+    <app-movie-item [movie]="m"></app-movie-item>
+</div>
+
+<div class="greetings" *ngIf="favorites?.length == 0">
+    <h3>Try to favorite any move your like!</h3>
+</div>

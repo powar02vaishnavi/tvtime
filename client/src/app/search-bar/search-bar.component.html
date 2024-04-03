@@ -1,0 +1,17 @@
+<div class="search-container">
+    <mat-form-field class="search-field">
+        <input matInput #searchBar type="text" (keyup.enter)="searchMovie(searchBar.value)"
+            placeholder="Movie name">
+    </mat-form-field>
+    <button *ngIf="!loading" mat-fab color="primary" class="search-button" (click)="searchMovie(searchBar.value)">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+    </button>
+
+    <mat-progress-spinner *ngIf="loading" class="spinner" color="primary" mode="indeterminate" [diameter]="45">
+    </mat-progress-spinner>
+</div>
+<div class="extras">
+    <p class="error-message" *ngIf="error">Error: {{ messageError }} &nbsp;
+        <mat-icon>warning</mat-icon>
+    </p>
+</div>

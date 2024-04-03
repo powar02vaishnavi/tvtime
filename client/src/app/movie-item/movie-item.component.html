@@ -1,0 +1,39 @@
+<div class="movie-container">
+    <img (click)="openModal()" class="movie-poster" *ngIf="movie.Poster" src="{{ movie.Poster }}"
+         onError="this.src='https://raw.githubusercontent.com/DhruvBhirud/tvtime/main/client/src/assets/404.jpg?raw=true'"alt="">
+
+    <div (click)="openModal()" class="movie-info">
+        <h2 *ngIf="movie.Title">{{ movie.Title }}</h2>
+
+        <div class="release">
+            <h3>Release Date</h3>
+            <span *ngIf="movie.Released">{{ movie.Released }}</span>
+        </div>
+
+        <div class="genre">
+            <h3>Genre</h3>
+            <span *ngIf="movie.Genre">{{ movie.Genre }} </span>
+        </div>
+
+        <div class="rating">
+            <div class="imdb">
+                <h3>IMDb Rating</h3>
+                <span *ngIf="movie.imdbRating">{{ movie.imdbRating }}</span>
+            </div>
+            <div class="meta">
+                <h3>Metascore</h3>
+                <span *ngIf="movie.Metascore">{{ movie.Metascore }}</span>
+            </div>
+            <div class="pg">
+                <h3>Rated</h3>
+                <span *ngIf="movie.Rated">{{ movie.Rated }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="fav-button">
+        <button mat-icon-button class="small-icon-button" color="primary" (click)="favoriteMovie()">
+            <mat-icon>{{ favoriteIcon }}</mat-icon>
+        </button>
+    </div>
+</div>

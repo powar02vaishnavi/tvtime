@@ -1,0 +1,11 @@
+<div *ngFor="let m of allMovies | slice: lowValue : highValue">
+    <app-movie-item [movie]="m"></app-movie-item>
+</div>
+
+<div class="greetings" *ngIf="allMovies?.length == 0">
+    <h3>Start searching any movie you like!</h3>
+</div>
+
+<mat-paginator [length]="allMovies.length" [pageSize]="pageSize"
+   (page)="getPaginatorData($event)">
+</mat-paginator>

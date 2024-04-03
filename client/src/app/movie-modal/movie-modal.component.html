@@ -1,0 +1,44 @@
+<div class="data-container">
+    <div class="header">
+        <h2 *ngIf="data.movie.Title">{{ data.movie.Title }}</h2>
+        <img class="movie-poster" *ngIf="data.movie.Poster" src="{{ data.movie.Poster }}" onError="this.src='https://raw.githubusercontent.com/DhruvBhirud/tvtime/main/client/src/assets/404.jpg?raw=true'" alt="">
+    </div>
+    <div class="actors">
+        <h4 class="title">Actors:</h4>
+        <p *ngIf="data.movie.Actors">{{ data.movie.Actors }}</p>
+    </div>
+    <div class="directors">
+        <h4 class="title">Directors:</h4>
+        <p *ngIf="data.movie.Director">{{ data.movie.Director }}</p>
+    </div>
+    <div class="genre">
+        <h4 class="title">Genre:</h4>
+        <p *ngIf="data.movie.Genre"> {{ data.movie.Genre }}</p>
+    </div>
+    <div class="plot">
+        <h4 class="title">Synopsis:</h4>
+        <p *ngIf="data.movie.Plot">{{ data.movie.Plot }}</p>
+    </div>
+    <div>
+        <h4 class="title">Where to watch:</h4>
+<!--        <button (click)="showStreamingInfo()">Show Streaming Info</button>-->
+      <div>
+        <span *ngIf="dataLoaded">Data is loaded</span><br>
+        <button mat-flat-button color="primary" (click)="showStreamingInfo()">Show Streaming Info</button>
+      </div>
+            <div *ngIf="streamingInfoMessage">
+              <ul>
+                <li *ngFor="let serviceInfo of streamingInfoMessage.split('\n')">
+                  <a *ngIf="serviceInfo.trim() !== ''" [href]="getServiceLink(serviceInfo)" target="_blank">
+                    <img *ngIf="isNetflix(serviceInfo)" src="/assets/servicelogo/netflix-dark.svg" alt="Netflix Logo" class="small-logo">
+                    <img *ngIf="isHotstar(serviceInfo)" src="/assets/servicelogo/hotstar-dark.svg" alt="Hotstar Logo" class="small-logo">
+                    <img *ngIf="isApple(serviceInfo)" src="/assets/servicelogo/apple-dark.svg" alt="Apple Logo" class="small-logo">
+                    <img *ngIf="isCuriosity(serviceInfo)" src="/assets/servicelogo/curiosity-dark.svg" alt="Curiosity Logo" class="small-logo">
+                    <img *ngIf="isMubi(serviceInfo)" src="/assets/servicelogo/mubi-dark.svg" alt="Mubi Logo" class="small-logo">
+                    <img *ngIf="isPrime(serviceInfo)" src="/assets/servicelogo/prime-dark.svg" alt="Prime Video Logo" class="small-logo">
+                    <img *ngIf="isZee5(serviceInfo)" src="/assets/servicelogo/zee5-dark.svg" alt="Zee5 Logo" class="small-logo">
+                  </a>
+              </ul>
+            </div>
+    </div>
+</div>
